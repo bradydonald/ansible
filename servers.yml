@@ -1,0 +1,9 @@
+# just a starting point for now
+---
+- hosts: local
+  tasks:
+
+  - name: Upgrade all packages
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
