@@ -1,0 +1,13 @@
+# Personal account related installs
+---
+- hosts: local
+  tasks:
+
+#
+# Check out my repos
+#
+
+  - name: OrgDocuments repo
+    ansible.builtin.git:
+      repo: git@github.com:bradydonald/OrgDocuments.git
+      dest: /home/d/OrgDocuments
