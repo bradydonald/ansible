@@ -12,3 +12,9 @@
     ansible.builtin.dnf:
       name: '@Development tools'
       state: present
+
+  - hosts: localhost
+    vars:
+    roles:
+       - agoloncser.emacs
+       
