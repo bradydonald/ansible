@@ -3,18 +3,23 @@
 - hosts: local
   tasks:
 
+# upgrade everything
+
   - name: Upgrade all packages
     ansible.builtin.dnf:
       name: "*"
       state: latest
+
+# make sure dev tooling is installed
 
   - name: Install the 'Development tools' package group
     ansible.builtin.dnf:
       name: '@Development tools'
       state: present
 
-  - hosts: localhost
-    vars:
-    roles:
-       - agoloncser.emacs
+# ansible-galaxy install agoloncser.emacs
+
+  - name: Install emacs
+    include_role:
+      name: agoloncser.emacs
        
