@@ -47,4 +47,6 @@
       lsd,
       msmtp,
       isync,
-      rigrep
+      ripgrep,
+      sqlite
+      
