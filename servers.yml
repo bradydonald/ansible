@@ -17,6 +17,14 @@
       name: '@Development tools'
       state: present
 
+# X development tools
+# Don't think this is needed on Wayland but this VM is X
+#
+  - name: Install the 'X Software Development' package group
+    ansible.builtin.dnf:
+      name: '@X Software Development'
+      state: present
+
 # ansible-galaxy install agoloncser.emacs
 
   - name: Install emacs
@@ -48,5 +56,17 @@
       msmtp,
       isync,
       ripgrep,
-      sqlite
+      sqlite,
+      autoconf,
+      texinfo,
+      libgccjit,
+      libgccjit-devel,
+      gnuntls-devel,
+      gnutls
+
+
+      
+      
+      
+      
       

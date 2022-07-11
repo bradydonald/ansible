@@ -54,6 +54,16 @@
       dest: "{{ lookup('env', 'HOME') }}/.fonts/"
       remote_src: yes
 
+
+#
+# Build latest emacs
+#
+  - name: latest emacs
+    ansible.builtin.git:
+      repo: git clone https://git.savannah.gnu.org/git/emacs.git
+      dest: /home/d/src/emacs
+
+
 #
 # Set up symlinks to dot files
 #
