@@ -41,3 +41,25 @@
     ansible.builtin.dnf:
       name: "1password"
       state: latest
+
+# lsd command, a more visually appealing ls
+
+  - name: Install lsd command
+    ansible.builtin.dnf:
+      name: lsd 
+      state: latest
+
+# msmtp
+
+  - name: Install msmtp
+    ansible.builtin.dnf:
+      name: msmtp
+      state: latest
+
+
+# mbsync
+
+  - name: Install mbsync
+    ansible.builtin.dnf:
+      name: isync
+      state: latest
