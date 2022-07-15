@@ -8,18 +8,24 @@
 #
 
   - name: OrgDocuments repo
+    tags:
+      - repos
     ansible.builtin.git:
       repo: git@github.com:bradydonald/personal.git
       dest: /home/d/OrgDocuments/personal
       key_file: /home/d/.ssh/ansible_rsa
 
   - name: .emacs repo
+    tags:
+      - repos
     ansible.builtin.git:
       repo: git@github.com:bradydonald/.emacs.d.git
       dest: /home/d/.emacs.d
       key_file: /home/d/.ssh/ansible_rsa
 
   - name: dotfiles repo
+    tags:
+      - repos
     ansible.builtin.git:
       repo: git@github.com:bradydonald/dotfiles.git
       dest: /home/d/src/dotfiles
@@ -31,17 +37,23 @@
 #
 
   - name: ensure fonts directory
+    tags:
+      - fonts
     file:
       path: "{{ lookup('env', 'HOME') }}/.fonts"
       state: directory
 
   - name: Download Hack
+    tags:
+      - fonts
     ansible.builtin.unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
       dest: "{{ lookup('env', 'HOME') }}/.fonts/"
       remote_src: yes
 
   - name: Jetbrain Mono
+    tags:
+      - fonts
     ansible.builtin.unarchive:
       src: https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip
       dest: "{{ lookup('env', 'HOME') }}/.fonts/"
@@ -49,6 +61,8 @@
 
 
   - name: Iosevka Aile
+    tags:
+      - fonts
     ansible.builtin.unarchive:
       src: https://github.com/be5invis/Iosevka/releases/download/v15.5.2/super-ttc-iosevka-aile-15.5.2.zip
       dest: "{{ lookup('env', 'HOME') }}/.fonts/"

@@ -6,6 +6,8 @@
 # upgrade everything
 
   - name: Upgrade all packages
+    tags:
+      - upgrade
     ansible.builtin.dnf:
       name: "*"
       state: latest
@@ -47,6 +49,8 @@
 
 
   - name: Install list of packages
+    tags:
+      - packages
     ansible.builtin.dnf:
       name: '{{ item }}'
       state: latest
@@ -61,12 +65,11 @@
       texinfo,
       libgccjit,
       libgccjit-devel,
-      gnuntls-devel,
-      gnutls
-
-
-      
-      
-      
-      
-      
+      gnutls-devel,
+      gnutls,
+      gtk4-devel,
+      gtk+-devel,
+      libXaw-devel,
+      libtiff-devel,
+      giflib-devel,
+      ncurses-devel
