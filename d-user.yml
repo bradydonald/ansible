@@ -114,5 +114,54 @@
       chdir: /home/d/src/emacs
 
 #
-# Install pCloudDrive
+# Other misc applications (--tags "bin")
 #
+
+  - name: ensure bin directory
+    tags:
+      - bin
+    file:
+      path: "{{ lookup('env', 'HOME') }}/bin"
+      state: directory
+
+  - name: ensure tmp directory
+    tags:
+      - bin
+    file:
+      path: "{{ lookup('env', 'HOME') }}/tmp"
+      state: directory
+
+# Install pCloudDrive
+
+  - name: Get pcloud
+    tags:
+      - bin
+    ansible.builtin.get_url:
+      url: https://p-def8.pcloud.com/cBZu1eKrMZMqwjTqZZZ6hdtr7Z2ZZil5ZkZPF7pVZrHZrzZBpZpRZc5Z6pZopZ9pZApZGFZUJZkJZPpZkzZWTVkVZnh2ytnYRkjFhQiUzCs40XpaK5xBk/pcloud
+      dest: "{{ lookup('env', 'HOME') }}/bin/"
+      mode: '755'
+
+
+#  Install PDFStudio
+  - name: Get PDF Studio Pro
+    tags:
+      - bin
+    ansible.builtin.get_url:
+      url: https://download.qoppa.com/pdfstudio/PDFStudio_linux64.sh
+      dest: "{{ lookup('env', 'HOME') }}/tmp/"
+      mode: '755'
+
+  - name: ensure pdfstudio directory
+    tags:
+      - bin
+    file:
+      path: "{{ lookup('env', 'HOME') }}/bin/pdfStudioPro"
+      state: directory
+
+  - name: Install PDF Studio Pro
+    tags:
+      - bin
+    ansible.builtin.shell:
+      cmd: ./PDFStudio_linux64.sh -q -dir "{{ lookup('env', 'HOME') }}/bin/pdfStudioPro"
+    args:
+      chdir: "{{ lookup('env', 'HOME') }}/tmp/"
