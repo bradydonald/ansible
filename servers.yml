@@ -8,27 +8,27 @@
 
 # install rpm fusion
 
-  - name: Install rpm fusion free
-    ansible.builtin.yum_repository:
-      name: rpm-fusion-free
-      description: RPM Fusion Free Repo
-      tags:
-        - repos
-      baseurl: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$releasever.noarch.rpm
+  - name: Enable rpm fusion free
+    ansible.builtin.dnf:
+      name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+      state: present
+      disable_gpg_check: yes
+    tags:
+      - repos
 
-  - name: Install rpm fusion non-free
-    ansible.builtin.yum_repository:
-      name: rpm-fusion-non-free
-      description: RPM Fusion Non-Free Repo
-      tags:
-        - repos
-      baseurl: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$releasever.noarch.rpm
+  - name: Enable rpm fusion non-free
+    ansible.builtin.dnf:
+      name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+      disable_gpg_check: yes
+      state: present
+    tags:
+      - repos
 
   - name: Install full flatpack access
     ansible.builtin.shell:
-      tags:
-        - repos
       cmd: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    tags:
+      - repos
 
 
 # upgrade everything
