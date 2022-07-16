@@ -113,6 +113,28 @@
       cmd: make
       chdir: /home/d/src/emacs
 
+
+  - name: org-capture desktop applet
+    tags:
+      - emacs
+    copy:
+      dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/org-protocol.desktop"
+      content: |
+        [Desktop Entry]
+        Name=org-protocol
+        Exec=emacsclient %u
+        Type=Application
+        Terminal=false
+        Categories=System;
+        MimeType=x-scheme-handler/org-protocol;
+
+  - name: org-capture install
+    tags:
+      - emacs
+    ansible.builtin.shell:
+      cmd: update-desktop-database "{{ lookup('env', 'HOME') }}/.local/share/applications"
+
+
 #
 # Other misc applications (--tags "bin")
 #
