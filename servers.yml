@@ -1,4 +1,6 @@
-# just a starting point for now
+#
+# andsible playbook for consistent install of fedora workstation
+#
 ---
 - hosts: local
   tasks:
