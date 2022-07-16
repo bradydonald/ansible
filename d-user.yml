@@ -113,3 +113,6 @@
       cmd: make
       chdir: /home/d/src/emacs
 
+#
+# Install pCloudDrive
+#

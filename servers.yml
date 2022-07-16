@@ -3,6 +3,34 @@
 - hosts: local
   tasks:
 
+# change hostname
+# sudo hostnamectl set-hostname "New_Custom_Name"
+
+# install rpm fusion
+
+  - name: Install rpm fusion free
+    ansible.builtin.yum_repository:
+      name: rpm-fusion-free
+      description: RPM Fusion Free Repo
+      tags:
+        - repos
+      baseurl: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$releasever.noarch.rpm
+
+  - name: Install rpm fusion non-free
+    ansible.builtin.yum_repository:
+      name: rpm-fusion-non-free
+      description: RPM Fusion Non-Free Repo
+      tags:
+        - repos
+      baseurl: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$releasever.noarch.rpm
+
+  - name: Install full flatpack access
+    ansible.builtin.shell:
+      tags:
+        - repos
+      cmd: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+
 # upgrade everything
 
   - name: Upgrade all packages
@@ -27,12 +55,6 @@
       name: '@X Software Development'
       state: present
 
-# ansible-galaxy install agoloncser.emacs
-
-  - name: Install emacs
-    include_role:
-      name: agoloncser.emacs
-
 #
 # install 1password
 #
@@ -43,7 +65,7 @@
       state: present
       key: https://downloads.1password.com/linux/keys/1password.asc
 
-  - name: Install the repo
+  - name: Install the 1password repo
     ansible.builtin.shell:
       cmd:  sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
 
@@ -72,4 +94,11 @@
       libXaw-devel,
       libtiff-devel,
       giflib-devel,
-      ncurses-devel
+      ncurses-devel,
+      texlive-scheme-full,
+      texstudio,
+      gnome-tweaks,
+      gnome-extensions-app,
+      vlc
+      
+      
