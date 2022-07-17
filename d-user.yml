@@ -1,4 +1,10 @@
 # Personal account related installs
+# run with:
+#
+# ansible-playbook -u d --private-key ~/.ssh/ansible_rsa
+# ~/src/ansible/d-user.yml (optional --tags "fonts")
+#
+
 ---
 - hosts: local
   tasks:

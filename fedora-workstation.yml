@@ -1,6 +1,12 @@
 #
 # andsible playbook for consistent install of fedora workstation
 #
+# run with:
+#
+# ansible-playbook -u root --private-key ~/.ssh/ansible_rsa
+# ~/src/ansible/fedora-workstation.yml (optional --tags "zoom")
+#
+
 ---
 - hosts: local
   tasks:
