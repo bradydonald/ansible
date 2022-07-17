@@ -102,14 +102,15 @@
       state: directory
 
 # Install pCloudDrive
+# their site uses a cdn so urls have a TTL
 
-  - name: Get pcloud
-    tags:
-      - bin
-    ansible.builtin.get_url:
-      url: https://p-def8.pcloud.com/cBZu1eKrMZMqwjTqZZZ6hdtr7Z2ZZil5ZkZPF7pVZrHZrzZBpZpRZc5Z6pZopZ9pZApZGFZUJZkJZPpZkzZWTVkVZnh2ytnYRkjFhQiUzCs40XpaK5xBk/pcloud
-      dest: "{{ lookup('env', 'HOME') }}/bin/"
-      mode: '755'
+  # - name: Get pcloud
+  #   tags:
+  #     - bin
+  #   ansible.builtin.get_url:
+  #     url: https://p-def8.pcloud.com/cBZu1eKrMZMqwjTqZZZ6hdtr7Z2ZZil5ZkZPF7pVZrHZrzZBpZpRZc5Z6pZopZ9pZApZGFZUJZkJZPpZkzZWTVkVZnh2ytnYRkjFhQiUzCs40XpaK5xBk/pcloud
+  #     dest: "{{ lookup('env', 'HOME') }}/bin/"
+  #     mode: '755'
 
 
 #  Install PDFStudio
@@ -135,3 +136,5 @@
       cmd: ./PDFStudio_linux64.sh -q -dir "{{ lookup('env', 'HOME') }}/bin/pdfStudioPro"
     args:
       chdir: "{{ lookup('env', 'HOME') }}/tmp/"
+
+      

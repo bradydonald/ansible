@@ -58,11 +58,13 @@
       state: present
 
 #
-# install 1password
+# install 1password repo
 #
 
 # install the repo
   - name: Get the 1password key
+    tags:
+      - 1password
     ansible.builtin.rpm_key:
       state: present
       key: https://downloads.1password.com/linux/keys/1password.asc
@@ -104,3 +106,18 @@
       vlc
       
       
+# install zoom
+  - name: Get Zoom 
+    tags:
+      - zoom
+    ansible.builtin.get_url:
+      url: https://zoom.us/client/latest/zoom_x86_64.rpm
+      dest: "/tmp/"
+
+  - name: Install Zoom
+    tags:
+      - zoom
+    ansible.builtin.dnf:
+      name: "/tmp/zoom_x86_64.rpm"
+      state: present
+      disable_gpg_check: yes
