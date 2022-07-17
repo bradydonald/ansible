@@ -121,3 +121,19 @@
       name: "/tmp/zoom_x86_64.rpm"
       state: present
       disable_gpg_check: yes
+
+# install teams
+  - name: Get Teams
+    tags:
+      - teams
+    ansible.builtin.get_url:
+      url: https://packages.microsoft.com/yumrepos/ms-teams/teams-1.5.00.10453-1.x86_64.rpm
+      dest: "/tmp/"
+
+  - name: Install Teams
+    tags:
+      - teams
+    ansible.builtin.dnf:
+      name: "/tmp/teams-1.5.00.10453-1.x86_64.rpm"
+      state: present
+      disable_gpg_check: yes
