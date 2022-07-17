@@ -3,6 +3,11 @@
 - hosts: local
   tasks:
 
+  - name: ensure src directory
+    file:
+      path: "{{ lookup('env', 'HOME') }}/src"
+      state: directory
+    
 #
 # Check out my repos
 #
@@ -77,63 +82,6 @@
     ansible.builtin.shell:
       cmd: sh /home/d/src/dotfiles/add-links.sh
       ignore_errors: yes
-
-
-#
-# Build latest emacs
-#
-
-  - name: Checkout Emacs src
-    tags:
-      - emacs
-    ansible.builtin.git:
-      repo: https://git.savannah.gnu.org/git/emacs.git
-      dest: /home/d/src/emacs
-
-  - name: Build latest emacs
-    tags:
-      - emacs
-    ansible.builtin.shell:
-      cmd: sh autogen.sh
-      chdir: /home/d/src/emacs
-      creates: /home/d/src/emacs/configure
-
-  - name: Build latest emacs
-    tags:
-      - emacs
-    ansible.builtin.shell:
-      cmd: ./configure --with-native-compilation --with-gnutls --with-jpeg --with-png --with-rsvg --with-tiff --with-wide-int --with-xft --with-xml2 --with-xpm --without-dbus --without-pop
-      chdir: /home/d/src/emacs
-      creates: /home/d/src/emacs/Makefile
-
-  - name: Build latest emacs
-    tags:
-      - emacs
-    ansible.builtin.shell:
-      cmd: make
-      chdir: /home/d/src/emacs
-
-
-  - name: org-capture desktop applet
-    tags:
-      - emacs
-    copy:
-      dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/org-protocol.desktop"
-      content: |
-        [Desktop Entry]
-        Name=org-protocol
-        Exec=emacsclient %u
-        Type=Application
-        Terminal=false
-        Categories=System;
-        MimeType=x-scheme-handler/org-protocol;
-
-  - name: org-capture install
-    tags:
-      - emacs
-    ansible.builtin.shell:
-      cmd: update-desktop-database "{{ lookup('env', 'HOME') }}/.local/share/applications"
-
 
 #
 # Other misc applications (--tags "bin")
