@@ -1,14 +1,14 @@
 #
-# andsible playbook for consistent install of fedora workstation
+# ansible playbook for consistent install of fedora workstation
 #
 # run with:
 #
-# ansible-playbook -u root --private-key ~/.ssh/ansible_rsa
+# sudo ansible-playbook -i hosts.ini -u root --private-key ~/.ssh/ansible_rsa
 # ~/src/ansible/fedora-workstation.yml (optional --tags "zoom")
 #
 
 ---
-- hosts: local
+- hosts: localhost
   tasks:
 
 # change hostname
@@ -58,10 +58,6 @@
 # X development tools
 # Don't think this is needed on Wayland but this VM is X
 #
-  - name: Install the 'X Software Development' package group
-    ansible.builtin.dnf:
-      name: '@X Software Development'
-      state: present
 
 #
 # install 1password repo
@@ -109,7 +105,9 @@
       texstudio,
       gnome-tweaks,
       gnome-extensions-app,
-      vlc
+      vlc,
+      maildir-utils,
+      ImageMagick
       
       
 # install zoom

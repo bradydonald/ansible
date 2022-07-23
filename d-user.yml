@@ -6,7 +6,7 @@
 #
 
 ---
-- hosts: local
+- hosts: localhost
   tasks:
 
   - name: ensure src directory
@@ -24,7 +24,7 @@
     ansible.builtin.git:
       repo: git@github.com:bradydonald/personal.git
       dest: /home/d/OrgDocuments/personal
-      key_file: /home/d/.ssh/ansible_rsa
+      key_file: /home/d/.ssh/id_rsa
 
   - name: .emacs repo
     tags:
@@ -32,7 +32,7 @@
     ansible.builtin.git:
       repo: git@github.com:bradydonald/.emacs.d.git
       dest: /home/d/.emacs.d
-      key_file: /home/d/.ssh/ansible_rsa
+      key_file: /home/d/.ssh/id_rsa
 
   - name: dotfiles repo
     tags:
@@ -40,7 +40,7 @@
     ansible.builtin.git:
       repo: git@github.com:bradydonald/dotfiles.git
       dest: /home/d/src/dotfiles
-      key_file: /home/d/.ssh/ansible_rsa
+      key_file: /home/d/.ssh/id_rsa
 
 
 #
@@ -87,7 +87,6 @@
   - name: symlink files
     ansible.builtin.shell:
       cmd: sh /home/d/src/dotfiles/add-links.sh
-      ignore_errors: yes
 
 #
 # Other misc applications (--tags "bin")

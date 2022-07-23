@@ -2,7 +2,7 @@
 # Build latest emacs
 #
 ---
-- hosts: local
+- hosts: localhost
   tasks:
 
   - name: Checkout Emacs src
