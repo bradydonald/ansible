@@ -114,7 +114,9 @@
       cargo,
       meson,
       scdoc,
-      neofetch
+      neofetch,
+      gnuplot,
+      sway
       
       
 # install zoom
