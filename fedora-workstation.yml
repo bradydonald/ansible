@@ -107,7 +107,14 @@
       gnome-extensions-app,
       vlc,
       maildir-utils,
-      ImageMagick
+      ImageMagick,
+      dconf-editor,
+      cmake,
+      g++,
+      cargo,
+      meson,
+      scdoc,
+      neofetch
       
       
 # install zoom
