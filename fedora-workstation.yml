@@ -116,11 +116,16 @@
       scdoc,
       neofetch,
       gnuplot,
+      # sway stuff
       sway,
-      alacritty
+      alacritty,
+      wshowkeys,
+      light,
+      clipman,
+      mako,
+      waybar
       
-      
-# install zoom
+# Install zoom
   - name: Get Zoom 
     tags:
       - zoom
