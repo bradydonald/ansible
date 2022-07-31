@@ -116,7 +116,7 @@
       scdoc,
       neofetch,
       gnuplot,
-      # sway stuff
+      qt-devel,
       sway,
       alacritty,
       wshowkeys,
@@ -156,3 +156,10 @@
       name: "/tmp/teams-1.5.00.10453-1.x86_64.rpm"
       state: present
       disable_gpg_check: yes
+
+  - name: Enable bridged networking for Boxes
+    tags:
+      - bridgednw
+    ansible.builtin.systemd:
+      name: virtnetworkd-ro.socket
+      enabled: yes
