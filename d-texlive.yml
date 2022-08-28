@@ -1,0 +1,56 @@
+# Personal account related installs
+# run with:
+#
+# ansible-playbook -u d --private-key ~/.ssh/ansible_rsa
+# ~/src/ansible/d-user.yml (optional --tags "fonts")
+#
+
+---
+- hosts: localhost
+  tasks:
+
+  - name: ensure src directory
+    file:
+      path: "{{ lookup('env', 'HOME') }}/src"
+      state: directory
+
+  - name: paths_rc
+    file:
+      path: "{{ lookup('env', 'HOME') }}/.bashrc.d/paths_rc"
+      state: file
+      
+
+
+#  Install texlive
+  - name: Get texlive tarball
+    tags:
+      - texlive
+    ansible.builtin.get_url:
+      url: https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+      dest: "{{ lookup('env', 'HOME') }}/src/"
+      mode: '755'
+
+  - name: zcat texlive
+    tags:
+      - texlive
+    ansible.builtin.shell:
+      cmd: zcat install-tl-unx.tar.gz | tar xf -
+    args:
+      chdir: "{{ lookup('env', 'HOME') }}/src/"
+
+  - name: install texlive
+    tags:
+      - texlive
+    ansible.builtin.shell:
+      cmd: perl ./install-tl --no-interaction --paper=letter
+    args:
+      chdir: "{{ lookup('env', 'HOME') }}/src/install-tl-*"
+
+  - name: prepend path
+    tags:
+      - texlive
+    ansible.builtin.shell:
+      cmd: echo -e "export TEXLIVE=/usr/local/texlive/2022/bin/x86_64-linux\n\nexport PATH=$TEXLIVE:\$PATH\n" >> paths_rc
+    args:
+      chdir: "{{ lookup('env', 'HOME') }}/.bashrc.d"
+      

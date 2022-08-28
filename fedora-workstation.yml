@@ -101,8 +101,6 @@
       libtiff-devel,
       giflib-devel,
       ncurses-devel,
-      texlive-scheme-full,
-      texstudio,
       gnome-tweaks,
       gnome-extensions-app,
       vlc,
