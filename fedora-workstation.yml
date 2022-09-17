@@ -121,7 +121,8 @@
       light,
       clipman,
       mako,
-      waybar
+      waybar,
+      go
       
 # Install zoom
   - name: Get Zoom 
