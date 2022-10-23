@@ -122,7 +122,9 @@
       clipman,
       mako,
       waybar,
-      go
+      go,
+      xdotool,
+      scrot
       
 # Install zoom
   - name: Get Zoom 
