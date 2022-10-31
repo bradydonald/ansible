@@ -126,7 +126,8 @@
       xdotool,
       scrot,
       fntsample,
-      djvulibre
+      djvulibre,
+      mupdf
       
 # Install zoom
   - name: Get Zoom 
