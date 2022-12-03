@@ -127,7 +127,9 @@
       scrot,
       fntsample,
       djvulibre,
-      mupdf
+      mupdf,
+      gnome-screenshot
+
       
 # Install zoom
   - name: Get Zoom 
