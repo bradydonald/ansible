@@ -128,7 +128,9 @@
       fntsample,
       djvulibre,
       mupdf,
-      gnome-screenshot
+      gnome-screenshot,
+      jansson-2.13.1-6.fc38,
+      jansson-devel-2.13.1-6.fc38
 
       
 # Install zoom
