@@ -5,6 +5,12 @@
 #
 # sudo ansible-pull
 #
+# or
+#
+# sudo ansible-pull -v -t repos -U git@github.com:bradydonald/ansible.git
+#
+# will run verbose, executing tag repos
+#
 
 ---
 - hosts: localhost
@@ -12,6 +18,10 @@
   become: true
 
   tasks:
+
+#    
+# these rules are for additional repositories
+#
 
   - name: Enable rpm fusion free
     ansible.builtin.dnf:
@@ -34,7 +44,33 @@
       cmd: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     tags:
       - repos
-    
+
+
+#      
+# upgrade everything
+#
+
+  - name: Upgrade all packages
+    tags:
+      - upgrade
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
+
+#      
+# make sure dev tooling is installed
+#
+
+  - name: Install the 'Development tools' package group
+    ansible.builtin.dnf:
+      name: '@Development tools'
+      state: present
+
+
+#
+# a whole nunch of packages
+#
+      
   - name: Install list of packages
     tags:
       - packages
@@ -58,8 +94,6 @@
       giflib-devel,
       ncurses-devel,
       maildir-utils,
-      ImageMagick,
-      dconf-editor,
       cmake,
       g++,
       cargo,
@@ -69,6 +103,4 @@
       gnuplot,
       qt-devel,
       go,
-      djvulibre,
-      mupdf,
       jansson-devel-2.13.1-6.fc38.x86_64
