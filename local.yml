@@ -12,7 +12,41 @@
   become: true
 
   tasks:
-  - name: install htop
-    package:
-      name: htop
 
+  - name: Install list of packages
+    tags:
+      - packages
+    ansible.builtin.dnf:
+      name: '{{ item }}'
+      state: latest
+    with_items:
+      msmtp,
+      ripgrep,
+      sqlite,
+      autoconf,
+      texinfo,
+      libgccjit,
+      libgccjit-devel,
+      gnutls-devel,
+      gnutls,
+      gtk4-devel,
+      gtk+-devel,
+      libXaw-devel,
+      libtiff-devel,
+      giflib-devel,
+      ncurses-devel,
+      maildir-utils,
+      ImageMagick,
+      dconf-editor,
+      cmake,
+      g++,
+      cargo,
+      meson,
+      scdoc,
+      neofetch,
+      gnuplot,
+      qt-devel,
+      go,
+      djvulibre,
+      mupdf,
+      jansson-devel-2.13.1-6.fc38.x86_64
