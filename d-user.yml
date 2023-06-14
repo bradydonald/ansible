@@ -1,8 +1,13 @@
 # Personal account related installs
 # run with:
 #
-# ansible-playbook -u d --private-key ~/.ssh/ansible_rsa
-# ~/src/ansible/d-user.yml (optional --tags "fonts")
+# runthe entire playbook:
+#
+# ansible-pull -v -U git@github.com:bradydonald/ansible.git d-user.yml
+#
+# or just a tag, e.g. repos
+#
+#  ansible-pull -v -t repos -U git@github.com:bradydonald/ansible.git d-user.yml
 #
 
 ---
@@ -24,6 +29,8 @@
     ansible.builtin.git:
       repo: git@github.com:bradydonald/personal.git
       dest: /home/d/OrgDocuments/personal
+      clone: yes
+      update: yes
       key_file: /home/d/.ssh/id_rsa
 
   - name: .emacs repo
