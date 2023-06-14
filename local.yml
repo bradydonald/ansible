@@ -114,4 +114,5 @@
       ripgrep,
       scdoc,
       sqlite,
-      texinfo
+      texinfo,
+      texlive-scheme-full
