@@ -24,7 +24,7 @@
     tags:
       - emacs
     ansible.builtin.shell:
-      cmd: ./configure --with-native-compilation --with-gnutls --with-jpeg --with-png --with-rsvg --with-tiff --with-wide-int --with-xft --with-xml2 --with-xpm --without-dbus --without-pop
+      cmd: --with-native-compilation --with-gnutls --with-jpeg --with-png --with-rsvg --with-tiff --with-wide-int --with-xft --with-xml2 --with-xpm --with-json
       chdir: /home/d/src/emacs
       creates: /home/d/src/emacs/Makefile
 

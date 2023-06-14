@@ -66,6 +66,16 @@
       name: '@Development tools'
       state: present
 
+  - name: Install the 'Development libraries' package group
+    ansible.builtin.dnf:
+      name: '@Development Libraries'
+      state: present
+      
+  - name: Install the 'X Development tools' package group
+    ansible.builtin.dnf:
+      name: '@X Software Development'
+      state: present
+      
 
 #
 # a whole nunch of packages
@@ -78,29 +88,30 @@
       name: '{{ item }}'
       state: latest
     with_items:
-      msmtp,
-      ripgrep,
-      sqlite,
       autoconf,
-      texinfo,
-      libgccjit,
-      libgccjit-devel,
-      gnutls-devel,
-      gnutls,
-      gtk4-devel,
-      gtk+-devel,
-      libXaw-devel,
-      libtiff-devel,
-      giflib-devel,
-      ncurses-devel,
-      maildir-utils,
+      cairo-devel,
+      cargo,
       cmake,
       g++,
-      cargo,
-      meson,
-      scdoc,
-      neofetch,
+      giflib-devel,
       gnuplot,
-      qt-devel,
+      gnutls,
+      gnutls-devel,
       go,
-      jansson-devel-2.13.1-6.fc38.x86_64
+      gtk+-devel,
+      gtk4-devel,
+      jansson-devel-2.13.1-6.fc38.x86_64,
+      libXaw-devel,
+      libgccjit,
+      libgccjit-devel,
+      libtiff-devel,
+      maildir-utils,
+      meson,
+      msmtp,
+      ncurses-devel,
+      neofetch,
+      qt-devel,
+      ripgrep,
+      scdoc,
+      sqlite,
+      texinfo
