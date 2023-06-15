@@ -39,13 +39,6 @@
     tags:
       - repos
 
-  - name: Install full flatpack access
-    ansible.builtin.shell:
-      cmd: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    tags:
-      - repos
-
-
   - name: Enable wslutilities
     community.general.copr:
       host: copr.fedorainfracloud.org
