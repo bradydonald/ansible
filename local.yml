@@ -46,6 +46,13 @@
       - repos
 
 
+  - name: Enable wslutilities
+    community.general.copr:
+      state: enabled
+      name: wslutilities/wslu
+    tags:
+      - repos
+
 #      
 # upgrade everything
 #
@@ -88,6 +95,8 @@
       name: '{{ item }}'
       state: latest
     with_items:
+      aspell,
+      aspell-en,
       autoconf,
       cairo-devel,
       cargo,
@@ -105,6 +114,7 @@
       libgccjit,
       libgccjit-devel,
       libtiff-devel,
+      lsd,
       maildir-utils,
       meson,
       msmtp,
@@ -115,4 +125,5 @@
       scdoc,
       sqlite,
       texinfo,
-      texlive-scheme-full
+      texlive-scheme-full,
+      wslu
