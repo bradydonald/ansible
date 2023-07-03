@@ -121,4 +121,14 @@
       texinfo,
       texlive-scheme-full,
       wslu,
-      mpv
+      mpv,
+      gtk3-devel.x86_64
+
+
+  - name: Install youtub-dl
+    tags:
+      - packages
+    ansible.builtin.shell:
+      cmd: |
+        curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+        chmod a+rx /usr/local/bin/youtube-dl
