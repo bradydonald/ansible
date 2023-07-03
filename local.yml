@@ -120,4 +120,5 @@
       sqlite,
       texinfo,
       texlive-scheme-full,
-      wslu
+      wslu,
+      mpv
