@@ -122,7 +122,8 @@
       texlive-scheme-full,
       wslu,
       mpv,
-      gtk3-devel.x86_64
+      gtk3-devel.x86_64,
+      libsqlite3x-devel
 
 
   - name: Install youtub-dl
