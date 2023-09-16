@@ -123,7 +123,8 @@
       wslu,
       mpv,
       gtk3-devel.x86_64,
-      libsqlite3x-devel
+      libsqlite3x-devel,
+      enchant2-devel
 
 
   - name: Install youtub-dl
