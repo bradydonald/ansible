@@ -124,7 +124,8 @@
       mpv,
       gtk3-devel.x86_64,
       libsqlite3x-devel,
-      enchant2-devel
+      enchant2-devel,
+      rpmconf
 
 
   - name: Install youtub-dl
