@@ -125,7 +125,8 @@
       gtk3-devel.x86_64,
       libsqlite3x-devel,
       enchant2-devel,
-      rpmconf
+      rpmconf,
+      rofi
 
 
   - name: Install youtub-dl
