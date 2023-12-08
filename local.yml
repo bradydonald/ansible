@@ -126,7 +126,8 @@
       libsqlite3x-devel,
       enchant2-devel,
       rpmconf,
-      rofi
+      rofi,
+      inkscape
 
 
   - name: Install youtub-dl
