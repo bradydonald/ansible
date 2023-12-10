@@ -127,7 +127,8 @@
       enchant2-devel,
       rpmconf,
       rofi,
-      inkscape
+      inkscape,
+      zeal
 
 
   - name: Install youtub-dl
