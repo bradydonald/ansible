@@ -128,7 +128,9 @@
       rpmconf,
       rofi,
       inkscape,
-      zeal
+      zeal,
+      libtree-sitter-devel,
+      zsh
 
 
   - name: Install youtub-dl
